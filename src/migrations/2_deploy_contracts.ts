@@ -1,4 +1,4 @@
-/// <reference types="./types" />
+/// <reference types="../types" />
 
 const DogelonmarsToken = artifacts.require('DogelonmarsToken');
 const ZingToken = artifacts.require('ZingToken')

@@ -5,7 +5,7 @@ import "./ZingToken.sol";
 import "./DogelonmarsToken.sol";
 
 contract SwapToken {
-    string public name = "Token Farm";
+    string public name = "Swap Token";
     ZingToken public zingToken;
     DogelonmarsToken public dogelonmarsToken;
     // ShibaToken public shibaToken;

@@ -1,4 +1,4 @@
-/// <reference types="./types" />
+/// <reference types="../types" />
 
 const Migrations = artifacts.require("Migrations");
 

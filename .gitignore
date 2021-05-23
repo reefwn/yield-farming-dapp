@@ -7,10 +7,12 @@
 
 # testing
 /coverage
+/test/*.js
 
 # production
 /build
 /abi
+/types
 
 # misc
 .DS_Store
