@@ -16,7 +16,7 @@ contract SwapToken {
     mapping(address => bool) public hasStaked;
     mapping(address => bool) public isStaking;
 
-    constructor(ZingToken _zingToken, DogelonmarsToken _dogelonmarsToken) {
+    constructor(ZingToken _zingToken, DogelonmarsToken _dogelonmarsToken) public {
         zingToken = _zingToken;
         dogelonmarsToken = _dogelonmarsToken;
         // shibaToken = _shibaToken;
