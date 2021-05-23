@@ -6,7 +6,6 @@ const ZingToken = artifacts.require("ZingToken");
 
 // staking tokens
 const DogelonmarsToken = artifacts.require("DogelonmarsToken");
-// const DaiToken = artifacts.require("DaiToken");
 
 require("chai")
   .use(require("chai-as-promised"))
@@ -17,26 +16,23 @@ function tokens(n) {
 }
 
 contract("SwapToken", ([owner, investor]) => {
-  let zingToken, dogelonmarsToken, daiToken, swapToken;
+  let zingToken, dogelonmarsToken, swapToken;
 
   before(async () => {
     // load contracts
-    // daiToken = await DaiToken.new();
     zingToken = await ZingToken.new();
 
     dogelonmarsToken = await DogelonmarsToken.new();
 
-    // swapToken = await Swap Token.new(zingToken.address, daiToken.address);
     swapToken = await SwapToken.new(
       zingToken.address,
       dogelonmarsToken.address
     );
 
-    // transfer all Zing Token to farm (1 million)
+    // transfer all Zing Token to platform (1 million)
     await zingToken.transfer(swapToken.address, tokens("1000000"));
 
     // send token to investor
-    // await daiToken.transfer(investor, tokens("100"), { from: owner });
     await dogelonmarsToken.transfer(investor, tokens("100"), { from: owner });
   });
 
@@ -46,13 +42,6 @@ contract("SwapToken", ([owner, investor]) => {
       assert.equal(name, "Zing Token");
     });
   });
-
-  // describe("Dai Token deployment", async () => {
-  //   it("has a name", async () => {
-  //     const name = await daiToken.name();
-  //     assert.equal(name, "Dai Token");
-  //   });
-  // });
 
   describe("Dogelon Mars deployment", async () => {
     it("has a name", async () => {
@@ -73,91 +62,7 @@ contract("SwapToken", ([owner, investor]) => {
     assert.equal(balance.toString(), tokens("1000000"));
   });
 
-  describe("Farming tokens", async () => {
-    //   it("rewards investors for staking Dai token", async () => {
-    //     let result;
-    //     // check balance before staking
-    //     result = await daiToken.balanceOf(investor);
-    //     assert.equal(
-    //       result.toString(),
-    //       tokens("100"),
-    //       "investor's DAI wallet balance correct before staking"
-    //     );
-
-    //     // stake DAI tokens
-    //     await daiToken.approve(swapToken.address, tokens("100"), {
-    //       from: investor,
-    //     });
-    //     await swapToken.stakeTokens(tokens("100"), { from: investor });
-
-    //     // check staking result
-    //     result = await daiToken.balanceOf(investor);
-    //     assert.equal(
-    //       result.toString(),
-    //       tokens("0"),
-    //       "investor's DAI wallet balance correct after staking"
-    //     );
-
-    //     result = await daiToken.balanceOf(swapToken.address);
-    //     assert.equal(
-    //       result.toString(),
-    //       tokens("100"),
-    //       "Swap Token's DAI balance correct after staking"
-    //     );
-
-    //     result = await swapToken.isStaking(investor);
-    //     assert.equal(
-    //       result.toString(),
-    //       "true",
-    //       "investor's staking status correct after staking"
-    //     );
-
-    //     // issue token
-    //     await swapToken.issueTokens({ from: owner });
-
-    //     // check balance
-    //     result = await zingToken.balanceOf(investor);
-    //     assert.equal(
-    //       result.toString(),
-    //       tokens("100"),
-    //       "investor's Reef Token wallet balance correct after issuance"
-    //     );
-
-    //     await swapToken.issueTokens({ from: investor }).should.be.rejected;
-
-    //     // unstake token
-    //     await swapToken.unstakeTokens({ from: investor });
-
-    //     // check balance
-    //     result = await daiToken.balanceOf(investor);
-    //     assert.equal(
-    //       result.toString(),
-    //       tokens("100"),
-    //       "investor's DAI Token wallet balance correct after staking"
-    //     );
-
-    //     result = await daiToken.balanceOf(swapToken.address);
-    //     assert.equal(
-    //       result.toString(),
-    //       tokens("0"),
-    //       "Swap Token's DAI balance correct after staking"
-    //     );
-
-    //     result = await swapToken.stakingBalance(investor);
-    //     assert.equal(
-    //       result.toString(),
-    //       tokens("0"),
-    //       "investor's staking balance correct after staking"
-    //     );
-
-    //     result = await swapToken.isStaking(investor);
-    //     assert.equal(
-    //       result.toString(),
-    //       "false",
-    //       "investor's staking status correct after staking"
-    //     );
-    //   });
-    // });
+  describe("Swap tokens", async () => {
 
     it("rewards investors for staking Dogelonmars token", async () => {
       let result;
@@ -166,10 +71,10 @@ contract("SwapToken", ([owner, investor]) => {
       assert.equal(
         result.toString(),
         tokens("100"),
-        "investor's DAI wallet balance correct before staking"
+        "investor's Dogelonmars wallet balance correct before staking"
       );
 
-      // stake DAI tokens
+      // stake Dogelonmars tokens
       await dogelonmarsToken.approve(swapToken.address, tokens("100"), {
         from: investor,
       });
@@ -180,14 +85,14 @@ contract("SwapToken", ([owner, investor]) => {
       assert.equal(
         result.toString(),
         tokens("0"),
-        "investor's DAI wallet balance correct after staking"
+        "investor's Dogelonmars wallet balance correct after staking"
       );
 
       result = await dogelonmarsToken.balanceOf(swapToken.address);
       assert.equal(
         result.toString(),
         tokens("100"),
-        "Swap Token's DAI balance correct after staking"
+        "Swap Token's Dogelonmars balance correct after staking"
       );
 
       result = await swapToken.isStaking(investor);
@@ -218,14 +123,14 @@ contract("SwapToken", ([owner, investor]) => {
       assert.equal(
         result.toString(),
         tokens("100"),
-        "investor's DAI Token wallet balance correct after staking"
+        "investor's Dogelonmars Token wallet balance correct after staking"
       );
 
       result = await dogelonmarsToken.balanceOf(swapToken.address);
       assert.equal(
         result.toString(),
         tokens("0"),
-        "Swap Token's DAI balance correct after staking"
+        "Swap Token's Dogelonmars balance correct after staking"
       );
 
       result = await swapToken.stakingBalance(investor);
