@@ -1,14 +1,16 @@
+/// <reference types="./types" />
+
 const DogelonmarsToken = artifacts.require('DogelonmarsToken');
 const ZingToken = artifacts.require('ZingToken')
 const SwapToken = artifacts.require('SwapToken')
 
-module.exports = async function(deployer: any, network: any, accounts: any) {
+module.exports = async function(deployer: Truffle.Deployer, network: string, accounts: Truffle.Accounts) {
   // Deploy Zing Token
-  await deployer.deploy(ZingToken)
+  deployer.deploy(ZingToken)
   const zingToken = await ZingToken.deployed()
 
   // Deploy Dogelonmars Token
-  await deployer.deploy(DogelonmarsToken)
+  deployer.deploy(DogelonmarsToken)
   const dogelonmarsToken = await DogelonmarsToken.deployed()
 
   // Deploy Shiba Token
@@ -17,7 +19,7 @@ module.exports = async function(deployer: any, network: any, accounts: any) {
 
   // Deploy SwapToken
   // await deployer.deploy(SwapToken, zingToken.address, shibaToken.address)
-  await deployer.deploy(SwapToken, zingToken.address, dogelonmarsToken.address);
+  deployer.deploy(SwapToken, zingToken.address, dogelonmarsToken.address);
   const swapToken = await SwapToken.deployed()
 
   // Transfer all Zing Tokens to SwapToken (1 million)
