@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -26,6 +26,16 @@ const App = () => {
         <Navbar />
         <Grid container justify="flex-end">
           <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+        </Grid>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: "80vh", minWidth: "100%" }}
+        >
+          <Card />
         </Grid>
       </Paper>
     </ThemeProvider>

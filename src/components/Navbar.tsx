@@ -1,8 +1,12 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
+import {
+  AppBar,
+  Button,
+  createStyles,
+  makeStyles,
+  Theme,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
 import logo from "../images/logo.png";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -23,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function ButtonAppBar() {
+const Navbar = () => {
   const classes = useStyles();
 
   return (
@@ -34,6 +38,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Yield Farming Dapp
           </Typography>
+
           <Button color="inherit" className={classes.account}>
             0x00
           </Button>
@@ -41,4 +46,6 @@ export default function ButtonAppBar() {
       </AppBar>
     </div>
   );
-}
+};
+
+export default Navbar;
