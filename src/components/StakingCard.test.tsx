@@ -1,7 +1,8 @@
 import { act } from "react-dom/test-utils";
+import { coins } from "../utils/variables";
+import StakingCard from "./StakingCard";
 import * as ReactDOM from "react-dom";
 import { expect } from "chai";
-import StakingCard from "./StakingCard";
 
 const jsdom = require("mocha-jsdom");
 
@@ -32,12 +33,17 @@ describe("testing StakingCard component", () => {
     });
     if (!!rootContainer) {
       const options = rootContainer.querySelectorAll("option");
-      const coins = options
+      const optionCoins = options
         ? Array.from(options).map((x) => {
             return x.value;
           })
         : null;
-      console.log(coins);
+      console.log(optionCoins);
+      if (optionCoins) {
+        for (let i = 0; i < optionCoins?.length; i++) {
+          expect(optionCoins[i], coins[i]);
+        }
+      }
     }
   });
 });
