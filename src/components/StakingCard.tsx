@@ -1,4 +1,8 @@
 import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
   createStyles,
   FormControl,
   InputBase,
@@ -9,11 +13,7 @@ import {
   Theme,
   withStyles,
 } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import { coins } from "../utils/variables";
 import { useState, ChangeEvent } from "react";
 
 const BootstrapInput = withStyles((theme: Theme) =>
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function SimpleCard() {
+export default function StakingCard() {
   const classes = useStyles();
 
   const [stakingCoin, setStakingCoin] = useState("");
@@ -108,8 +108,9 @@ export default function SimpleCard() {
             onChange={handleStakingChange}
             input={<BootstrapInput />}
           >
-            <MenuItem value="doge">Doge</MenuItem>
-            <MenuItem value="dogelonmars">Dogelon Mars</MenuItem>
+            {coins.map((coin) => {
+              return <MenuItem value={coin.toLowerCase()}>{coin}</MenuItem>;
+            })}
           </Select>
         </FormControl>
 
@@ -120,8 +121,9 @@ export default function SimpleCard() {
             onChange={handleRewardChange}
             input={<BootstrapInput />}
           >
-            <MenuItem value="doge">Doge</MenuItem>
-            <MenuItem value="dogelonmars">Dogelon Mars</MenuItem>
+            {coins.map((coin) => {
+              return <MenuItem value={coin.toLowerCase()}>{coin}</MenuItem>;
+            })}
           </Select>
         </FormControl>
       </CardContent>

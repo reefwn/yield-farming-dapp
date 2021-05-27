@@ -7,7 +7,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import Navbar from "./components/Navbar";
-import Card from "./components/Card";
+import StakingCard from "./components/StakingCard";
 import { useState } from "react";
 
 const App = () => {
@@ -35,7 +35,7 @@ const App = () => {
           justify="center"
           style={{ minHeight: "80vh", minWidth: "100%" }}
         >
-          <Card />
+          <StakingCard />
         </Grid>
       </Paper>
     </ThemeProvider>
