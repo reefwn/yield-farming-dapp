@@ -30,8 +30,9 @@ module.exports = async function (
   await zingToken.transfer(swapToken.address, "1000000000000000000000000");
 
   // Transfer 100 Dogelonmars Tokens to investor
-  // await shibaToken.transfer(accounts[1], '100000000000000000000')
-  await dogelonmarsToken.transfer(accounts[9], "100000000000000000000");
+  for (let i=1; i<10; i++) {
+    await dogelonmarsToken.transfer(accounts[i], "100000000000000000000");
+  }
 };
 
 export {};
