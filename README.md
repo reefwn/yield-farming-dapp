@@ -7,7 +7,7 @@ truffle migrate --reset
 
 ## Generate type interface for ABI
 ```
-typechain target=truffle-v5 "./abi/*.json"
+typechain --target=truffle-v5 "./src/abi/*.json"
 ```
 
 ## Test ABI

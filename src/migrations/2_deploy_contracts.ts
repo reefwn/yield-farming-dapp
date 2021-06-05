@@ -4,11 +4,11 @@ const DogelonmarsToken = artifacts.require("DogelonmarsToken");
 const ZingToken = artifacts.require("ZingToken");
 const SwapToken = artifacts.require("SwapToken");
 
-module.exports = async function (
+module.exports = async (
   deployer: Truffle.Deployer,
   network: string,
   accounts: Truffle.Accounts
-) {
+) => {
   // Deploy Zing Token
   deployer.deploy(ZingToken);
   const zingToken = await ZingToken.deployed();
@@ -30,7 +30,7 @@ module.exports = async function (
   await zingToken.transfer(swapToken.address, "1000000000000000000000000");
 
   // Transfer 100 Dogelonmars Tokens to investor
-  for (let i=1; i<10; i++) {
+  for (let i = 1; i < 10; i++) {
     await dogelonmarsToken.transfer(accounts[i], "100000000000000000000");
   }
 };

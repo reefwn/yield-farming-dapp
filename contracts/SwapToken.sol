@@ -6,9 +6,8 @@ import "./DogelonmarsToken.sol";
 
 contract SwapToken {
     string public name = "Swap Token";
-    ZingToken public zingToken;
     DogelonmarsToken public dogelonmarsToken;
-    // ShibaToken public shibaToken;
+    ZingToken public zingToken;
     address public owner;
 
     address[] public stakers;
@@ -19,7 +18,6 @@ contract SwapToken {
     constructor(ZingToken _zingToken, DogelonmarsToken _dogelonmarsToken) public {
         zingToken = _zingToken;
         dogelonmarsToken = _dogelonmarsToken;
-        // shibaToken = _shibaToken;
         owner = msg.sender;
     }
 
@@ -28,7 +26,6 @@ contract SwapToken {
         require(_amount > 0, "amount cannot be 0");
 
         // transfer token for staking
-        // shibaToken.transferFrom(msg.sender, address(this), _amount);
         dogelonmarsToken.transferFrom(msg.sender, address(this), _amount);
 
         // update staking blance
@@ -50,8 +47,7 @@ contract SwapToken {
 
         require(balance > 0, "staking balance cannot be 0");
 
-        // transfer back DAI token
-        // shibaToken.transfer(msg.sender, balance);
+        // transfer back Zing token
         dogelonmarsToken.transfer(msg.sender, balance);
 
         // reset staking balance to 0

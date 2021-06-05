@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Navbar = () => {
+const Navbar = ({ account }: { account: string }) => {
   const classes = useStyles();
 
   return (
@@ -40,7 +40,7 @@ const Navbar = () => {
           </Typography>
 
           <Button color="inherit" className={classes.account}>
-            0x00
+            {account}
           </Button>
         </Toolbar>
       </AppBar>

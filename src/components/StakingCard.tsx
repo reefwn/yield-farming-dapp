@@ -109,7 +109,11 @@ export default function StakingCard() {
             input={<BootstrapInput />}
           >
             {coins.map((coin) => {
-              return <MenuItem value={coin.toLowerCase()}>{coin}</MenuItem>;
+              return (
+                <MenuItem key={coin.toLowerCase()} value={coin.toLowerCase()}>
+                  {coin}
+                </MenuItem>
+              );
             })}
           </Select>
         </FormControl>
@@ -122,7 +126,11 @@ export default function StakingCard() {
             input={<BootstrapInput />}
           >
             {coins.map((coin) => {
-              return <MenuItem value={coin.toLowerCase()}>{coin}</MenuItem>;
+              return (
+                <MenuItem key={coin.toLowerCase()} value={coin.toLowerCase()}>
+                  {coin}
+                </MenuItem>
+              );
             })}
           </Select>
         </FormControl>
