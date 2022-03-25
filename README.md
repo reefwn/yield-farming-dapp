@@ -14,3 +14,10 @@ typechain --target=truffle-v5 "./src/abi/*.json"
 ```
 truffle test
 ```
+
+## Technologies & IDE
+<div>
+    <img style="float: left" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" height="48" alt="react">
+    <img style="float: left" src="https://trufflesuite.com/assets/logo.png" height="48" alt="truffle"> &nbsp;&nbsp;&nbsp;
+    <img style="float: left" src="https://code.visualstudio.com/assets/updates/1_35/logo-stable.png" height="48" alt="vscode">
+</div>
